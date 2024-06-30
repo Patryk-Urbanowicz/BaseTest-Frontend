@@ -1,30 +1,43 @@
-import {Form} from "react-router-dom";
+import {SyntheticEvent, useState} from "react";
+import QuizForm from "./QuizForm.tsx";
+import Quiz from "./Quiz.tsx";
 
 export default function QuizInit() {
+
+    async function handleSubmit(submitEvent: SyntheticEvent<HTMLFormElement>) {
+        submitEvent.preventDefault();
+        const form = submitEvent.currentTarget;
+        const formElements = form.elements;
+        const questionsNumber = formElements.questionsNumber.value;
+        const questionsType = formElements.questionsType.value;
+
+        const requestURL = `https://opentdb.com/api.php?amount=${questionsNumber}&type=${questionsType}`;
+        const response = await fetch(requestURL);
+        if (response.status !== 200) {
+            alert('API error! Try using the app at another time.')
+            return;
+        }
+        const requestData = await response.json();
+        if (requestData.response_code === 1 || requestData.response_code === 4) alert('Out of questions with given criteria! Try changing criteria/number of expected questions or reset your session in \'summary\' tab');
+        if (requestData.response_code === 2) alert('Wrong criteria! Try changing them.');
+        if (requestData.response_code === 3) alert('Stale session! Try refreshing page or reseting it in \'summary\' tab');
+        if (requestData.response_code === 5) alert('Slow down! Too many requests from your ip.');
+
+        if (requestData.response_code === 0) {
+            //gotten data
+            setQuestions(requestData.results);
+            setIsSubmited(true);
+        }
+    }
+
+    const [isSubmited, setIsSubmited] = useState(false);
+    const [questions, setQuestions] = useState();
+
     return (
-        <div >
-            <Form className="max-w-sm mx-auto">
+        <>
+            {!isSubmited && <QuizForm handler={handleSubmit} />}
+            {isSubmited && <Quiz questions={questions}/>}
+        </>
 
-
-                <label htmlFor="questionsType" className="block mb-2 text-sm font-medium text-gray-900">Questions
-                    type:</label>
-                <select id="questionsType" defaultValue="any"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                            focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="multiple">Multiple Choice</option>
-                    <option value="boolean">True/False</option>
-                    <option value="any">Any</option>
-                </select>
-
-                <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900"> Number of questions: </label>
-                <input type="number" id="questionsNumber" aria-describedby="helper-text-explanation"
-                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       required defaultValue={10}/>
-
-                <input type="submit"
-                        className="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" />
-            </Form>
-        </div>
     )
 }
