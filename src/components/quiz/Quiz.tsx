@@ -7,7 +7,7 @@ export default function Quiz({questions}) {
     function handleAnswer(newPoints: number) {
         setPoints(points + newPoints);
         setCurrentQuestion(currentQuestion + 1);
-        if (currentQuestion >= numberOfQuestions) setIsCompleted(true);
+        if (currentQuestion >= numberOfQuestions-1) setIsCompleted(true);
     }
 
     console.log(questions);
@@ -22,13 +22,16 @@ export default function Quiz({questions}) {
         <>
             {!isCompleted && (
                 <>
-                    <p>Question {currentQuestion + 1}/{numberOfQuestions}</p>
-                    <p>Points: {points}</p>
-                    <Question question={questions[currentQuestion]} answerHandler={handleAnswer} />
+                    <div className="max-w-sm mx-auto text-center p-5 text-lg font-medium text-gray-900">
+                        <p>Question {currentQuestion + 1}/{numberOfQuestions}</p>
+                        <p>Points: {points}</p>
+                    </div>
+
+                    <Question question={questions[currentQuestion]} answerHandler={handleAnswer}/>
                 </>
 
             )}
-            {isCompleted && <QuizSummary />}
+            {isCompleted && <QuizSummary maxPoints={numberOfQuestions} achievedPoints={points}/>}
         </>
     )
 }
