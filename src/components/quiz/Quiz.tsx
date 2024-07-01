@@ -2,15 +2,13 @@ import {useState} from "react";
 import Question from "./Question.tsx";
 import QuizSummary from "./QuizSummary.tsx";
 
-export default function Quiz({questions}) {
+export default function Quiz({questions, resetHandler}) {
 
     function handleAnswer(newPoints: number) {
         setPoints(points + newPoints);
         setCurrentQuestion(currentQuestion + 1);
         if (currentQuestion >= numberOfQuestions-1) setIsCompleted(true);
     }
-
-    console.log(questions);
 
     const numberOfQuestions = questions.length;
     const [points, setPoints] = useState(0);
@@ -27,11 +25,11 @@ export default function Quiz({questions}) {
                         <p>Points: {points}</p>
                     </div>
 
-                    <Question question={questions[currentQuestion]} answerHandler={handleAnswer}/>
+                    <Question question={questions[currentQuestion]} answerHandler={handleAnswer} resetHandler={resetHandler}/>
                 </>
 
             )}
-            {isCompleted && <QuizSummary maxPoints={numberOfQuestions} achievedPoints={points}/>}
+            {isCompleted && <QuizSummary maxPoints={numberOfQuestions} achievedPoints={points} resetHandler={resetHandler}/>}
         </>
     )
 }

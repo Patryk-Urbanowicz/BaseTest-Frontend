@@ -29,13 +29,17 @@ export default function QuizInit() {
         }
     }
 
+    const handleReset = () => {
+        setIsSubmited(false);
+    }
+
     const [isSubmited, setIsSubmited] = useState(false);
     const [questions, setQuestions] = useState();
 
     return (
         <>
             {!isSubmited && <QuizForm handler={handleSubmit} />}
-            {isSubmited && <Quiz questions={questions}/>}
+            {isSubmited && <Quiz questions={questions} resetHandler={handleReset}/>}
         </>
 
     )
