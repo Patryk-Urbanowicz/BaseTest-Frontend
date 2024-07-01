@@ -19,11 +19,10 @@ export default function QuizInit() {
         }
         const requestData = await response.json();
         if (requestData.response_code === 1 || requestData.response_code === 4) alert('Out of questions with given criteria! Try changing criteria/number of expected questions or reset your session in \'summary\' tab');
-        if (requestData.response_code === 2) alert('Wrong criteria! Try changing them.');
-        if (requestData.response_code === 3) alert('Stale session! Try refreshing page or reseting it in \'summary\' tab');
-        if (requestData.response_code === 5) alert('Slow down! Too many requests from your ip.');
-
-        if (requestData.response_code === 0) {
+        else if (requestData.response_code === 2) alert('Wrong criteria! Try changing them.');
+        else if (requestData.response_code === 3) alert('Stale session! Try refreshing page or reseting it in \'summary\' tab');
+        else if (requestData.response_code === 5) alert('Slow down! Too many requests from your ip.');
+        else if (requestData.response_code === 0) {
             //gotten data
             setQuestions(requestData.results);
             setIsSubmited(true);
