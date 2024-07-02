@@ -1,4 +1,5 @@
 // Token life is 6 hours
+
 export const msTokenLife = 1000*60*60*6;
 
 export function getToken(): string {
@@ -18,7 +19,7 @@ export function updateTokenLife(): void {
 }
 
 //Checks if token exists in localStorage and handles it being stale
-//cal takes place in Root.tsx to its done only oncedf
+//call takes place in Root.tsx to its done only once
 export async function initToken(){
     const token = getToken();
     const tokenDate = getTokenDate();
@@ -30,4 +31,14 @@ export async function initToken(){
         localStorage.setItem("token", JSON.stringify(responseData.token));
         localStorage.setItem("tokenDate", JSON.stringify(Date.now()));
     }
+}
+
+export async function resetToken() {
+    const response = await fetch('https://opentdb.com/api_token.php?command=request');
+    if (!response.ok) return;
+    const responseData = await response.json();
+    localStorage.setItem("token", JSON.stringify(responseData.token));
+    localStorage.setItem("tokenDate", JSON.stringify(Date.now()));
+    localStorage.setItem("totalAnswered", JSON.stringify(0));
+    localStorage.setItem("totalCorrect", JSON.stringify(0));
 }

@@ -4,7 +4,7 @@ export default function QuizSummary({maxPoints, achievedPoints, resetHandler}) {
             <p>Points achieved: {achievedPoints}</p>
             <p>Out of possible: {maxPoints}</p>
             <p>{Math.round(achievedPoints / maxPoints * 100)}%</p>
-            <button onClick={resetHandler} className="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-2">Reset</button>
+            <button onClick={resetHandler} className="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-2">New quiz</button>
         </div>
     )
 }

@@ -4,10 +4,9 @@ export function addAnswerToTotal(correct: boolean) {
     const currentTotal: number = getTotalAnswered();
     const currentCorrect: number = getTotalCorrect();
 
-    localStorage.setItem("totalAnswered", currentTotal+1);
-    if (correct) localStorage.setItem("totalCorrect", currentCorrect+1);
+    localStorage.setItem("totalAnswered", JSON.stringify(currentTotal+1));
+    if (correct) localStorage.setItem("totalCorrect", JSON.stringify(currentCorrect+1));
     updateTokenLife();
-    console.log(`added answer: ${correct}`);
 }
 
 export function getTotalAnswered(): number {
