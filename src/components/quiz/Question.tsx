@@ -35,7 +35,7 @@ export default function Question({question, answerHandler}) {
             <p className="text-lg font-medium text-gray-900 pb-6 text-center">{he.decode(question.question)}</p>
             {
                 answers.map((answer: string, index: number) => (
-                    <button key={index} className="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full m-3" onClick={handleAnswer}>
+                    <button key={index} className="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full mx-auto mt-2 mb-2" onClick={handleAnswer}>
                         {answer}
                     </button>
                 ))
