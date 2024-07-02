@@ -12,3 +12,21 @@ Projekt został wykonany przy użyciu następujących technologii:
 - Rozwiązywanie testów trivia pobieranych z API OpenTriviaDB.
 - Nawigacja między różnymi ekranami aplikacji dzięki React Router.
 - Stylizacja komponentów przy użyciu Tailwind CSS.
+
+## Instalacja i uruchomienie
+1. Sklonuj repozytorium:
+    ```bash
+    git clone https://github.com/Patryk-Urbanowicz/basetest-frontend
+    ```
+2. Przejdź do katalogu projektu:
+    ```bash
+    cd twoj-projekt
+    ```
+3. Zainstaluj zależności:
+    ```bash
+    npm install
+    ```
+4. Uruchom aplikację:
+    ```bash
+    npm start
+    ```
