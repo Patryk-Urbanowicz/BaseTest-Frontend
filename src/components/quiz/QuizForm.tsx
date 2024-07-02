@@ -1,7 +1,7 @@
 
 export default function QuizForm({handler}) {
     return (
-        <form className="max-w-sm mx-auto" onSubmit={handler}>
+        <form className="max-w-sm mx-auto p-4" onSubmit={handler}>
 
             <label htmlFor="questionsType" className="block mb-2 text-sm font-medium text-gray-900">Questions
                 type:</label>
