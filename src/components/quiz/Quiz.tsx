@@ -17,7 +17,7 @@ export default function Quiz({questions, resetHandler}) {
 
 
     return (
-        <>
+        <div className="m-2">
             {!isCompleted && (
                 <>
                     <div className="max-w-sm mx-auto text-center p-5 text-lg font-medium text-gray-900">
@@ -30,6 +30,6 @@ export default function Quiz({questions, resetHandler}) {
 
             )}
             {isCompleted && <QuizSummary maxPoints={numberOfQuestions} achievedPoints={points} resetHandler={resetHandler}/>}
-        </>
+        </div>
     )
 }
