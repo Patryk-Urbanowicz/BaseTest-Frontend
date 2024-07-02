@@ -1,6 +1,6 @@
 # Projekt zaliczeniowy TNAF
 ## Opis projektu
-Ten projekt został stworzony jako zaliczenie przedmiotu TNAF. Aplikacja umożliwia rozwiązywanie testów trivia, korzystając z API OpenTriviaDB, jednocześnie śledząc łączne wyniki rozwiązywanych testów i zapewniając brak powtarzania sie tych samych pytań. 
+Ten projekt został stworzony w ramach zaliczenie przedmiotu TNAF. Aplikacja umożliwia rozwiązywanie testów trivia, korzystając z API OpenTriviaDB, jednocześnie śledząc łączne wyniki rozwiązywanych testów i zapewniając brak powtarzania sie tych samych pytań. 
 
 ## Technologie
 Projekt został wykonany przy użyciu następujących technologii:
