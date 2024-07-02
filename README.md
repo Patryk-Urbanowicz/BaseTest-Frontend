@@ -1,8 +1,8 @@
-#Projekt zaliczeniowy TNAF
-##Opis projektu
+# Projekt zaliczeniowy TNAF
+## Opis projektu
 Ten projekt został stworzony jako zaliczenie przedmiotu TNAF. Aplikacja umożliwia rozwiązywanie testów trivia, korzystając z API OpenTriviaDB.
 
-##Technologie
+## Technologie
 Projekt został wykonany przy użyciu następujących technologii:
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/)
