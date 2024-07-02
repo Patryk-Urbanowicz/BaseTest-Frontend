@@ -20,7 +20,7 @@ Projekt został wykonany przy użyciu następujących technologii:
     ```
 2. Przejdź do katalogu projektu:
     ```bash
-    cd twoj-projekt
+    cd basetest-frontend
     ```
 3. Zainstaluj zależności:
     ```bash
@@ -28,5 +28,6 @@ Projekt został wykonany przy użyciu następujących technologii:
     ```
 4. Uruchom aplikację:
     ```bash
-    npm start
+    npm run dev
     ```
+Aplikacja powinna być dostępna pod http://localhost:5173/basetest-frontend/  
