@@ -30,4 +30,4 @@ Projekt został wykonany przy użyciu następujących technologii:
     ```bash
     npm run dev
     ```
-Aplikacja powinna być dostępna pod http://localhost:5173/basetest-frontend/  
+Aplikacja powinna być dostępna pod http\://localhost:5173/basetest-frontend/  
