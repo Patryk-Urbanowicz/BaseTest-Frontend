@@ -4,12 +4,17 @@ import Root from "./routes/Root.tsx";
 import Summary from "./components/summary/Summary.tsx";
 import Error from "./components/Error.tsx";
 import QuizInit from "./components/quiz/QuizInit.tsx";
+import Homepage from "./components/homepage/Homepage.tsx";
 
 function App() {
     const router = createHashRouter([{
         path: "/",
         element: <Root />,
         children: [
+            {
+                path: '',
+                element: <Homepage />
+            },
             {
                 path: 'quiz',
                 element: <QuizInit />

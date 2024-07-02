@@ -1,4 +1,5 @@
 import he from 'he'
+import {addAnswerToTotal} from "../../summaryUtil.ts";
 
 export default function Question({question, answerHandler}) {
 
@@ -13,8 +14,14 @@ export default function Question({question, answerHandler}) {
 
     const handleAnswer = (e) => {
         const answer = e.target.innerText;
-        if (answer === question.correct_answer) answerHandler(1);
-        else answerHandler(0);
+        if (answer === question.correct_answer) {
+            addAnswerToTotal(true);
+            answerHandler(1);
+        }
+        else {
+            addAnswerToTotal(false);
+            answerHandler(0);
+        }
     };
 
     question.incorrect_answers.map(text => he.decode(text));
@@ -28,7 +35,7 @@ export default function Question({question, answerHandler}) {
             <p className="text-lg font-medium text-gray-900 pb-6 text-center">{he.decode(question.question)}</p>
             {
                 answers.map((answer: string, index: number) => (
-                    <button key={index} className="block mx-auto bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-2" onClick={handleAnswer}>
+                    <button key={index} className="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-2" onClick={handleAnswer}>
                         {answer}
                     </button>
                 ))

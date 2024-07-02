@@ -1,6 +1,9 @@
 import {Link, Outlet} from "react-router-dom";
+import {initToken} from "../util.ts";
 
 export default function Root() {
+    initToken();
+
     return (
         <>
             <nav>
